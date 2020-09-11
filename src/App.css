@@ -1,24 +1,32 @@
 :root{
-  --main-color: rgb(62, 191, 170)
+  --main-color: rgb(62, 191, 170);
 }
-
-.map{
-  width: 500px;
-  height: 500px;
-  display: block;
-  
+html, body {
+  overflow-x: hidden;
+} 
+.section__title {
 }
+ .map{
+max-width: 80vw;
+} 
 .path{
   cursor: pointer;
 }
 .path:hover{
-  /* filter: brightness(150%); */
-  /* background-color:rgba(0,0,0,0.5);  */
+
   fill: var(--main-color);
   transition: fill 0.1s;
 }
-
-.container{
-  display: flex;
-  flex-direction: column;
+.path:active{
+  fill: var(--main-color);
 }
+
+
+
+.slider__holder{
+  overflow-x:visible;
+}
+
+
+/* Scalable SVG */
+/* https://css-tricks.com/scale-svg/ */
