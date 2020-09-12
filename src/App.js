@@ -27,9 +27,10 @@ function App() {
 
   return (
     <>
-      <div className=" container d-flex flex-wrap overflow-hidden">
-        
         <h2 className="section__title m-5 text-center font-weight-bolder"> WYBIERZ WOJEWÓDZTWO </h2>
+
+       <div className=" container d-flex flex-wrap overflow-hidden">
+        
 
         <div className="row lg:row-cols-1">
         
@@ -42,7 +43,7 @@ function App() {
                 <path
                   key={index}
                   d={item.d}
-                  className={`path path-${index}`}
+                  className={`path path-${index} ${state.countSelected === item.count ? "path--active" : null}`}
                   xlinkTitle="123213"
                   onClick={() => setState((s) => ({ ...s, countSelected: item.count }))}
                 />
@@ -56,6 +57,11 @@ function App() {
 
         </div>
       </div>
+
+
+
+
+      
     </>
 
   );

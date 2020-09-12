@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import modalStyle from "./modalStyle.css";
 import { genArray, randomFromRange } from "../utils.js";
 import 'bootstrap/dist/css/bootstrap.css';
-
+// import resetCss from '../resetCss.css'
+import sliderArrow from '../assets/next.png';
 export default function Modal(props) {
 
   const [state, setState] = useState({
@@ -12,22 +13,28 @@ export default function Modal(props) {
   const LIMIT = 3
   const moveBy = 2
 
+  useEffect(() => {
+    console.log(state);
+  },[state.offset])
+
+
   const images = genArray(state.allItems, () => randomFromRange(0, 90))
-    .map((item) => `https://picsum.photos/id/${item}/600/600`)
+    .map((item,index) => `https://picsum.photos/id/${index}/600/600`)
     .map((image, index) => 
     <>
-    <div className="">
-    <img className="p-1  img " src={image} alt="" />
-    <p>{index}</p>
+    <div className="slider__item">
+    <img className="p-1 img" src={image} alt="" />
+    <p className="caption__name">{index}</p>
+    <p className="caption__info">Lorem Ipsum</p>
     </div>
-
     </>
     );
 
+    console.log(images);
     function goToMoreInSlider() {
       if ( state.offset + moveBy >= images.length) {
         return (
-          <div className="col-1 text-center"> GO TO MORE </div>
+          <div className="text-center slider__cta"> GO TO MORE </div>
         )
       }
     }
@@ -56,18 +63,27 @@ export default function Modal(props) {
     <>
         <h3 className="text-center">{props.count}</h3>
 
-      <div className=" modal__holder container position-relative ">
-        <div className="row d-flex  ">
+        <div className="position-relative">
 
-      <a className="position-absolute slider__arrow arrow__prev " onClick={() =>  moveSlides("prev")} >XPREV</a>  
+      <div className=" modal__holder  bg-secondary d-flex justify-content-center align-items-center">
+        {(state.offset === 0 ) ?  null : 
+        <a className="position-absolute slider__arrow arrow__prev " onClick={() =>  moveSlides("prev")}>
+          <img src={sliderArrow} className="arrow__img arrow__img--prev "/>
+        </a>  
+      }
+         <div className="col-12 slider__holder  d-flex justify-content-center align-items-center ">
 
-      <div className="col-11 imgs__holder  d-flex justify-content-center align-items-center ">
-      {images.slice(state.offset, state.offset+LIMIT)}
+            {images.slice(state.offset, state.offset+LIMIT)}
+             {goToMoreInSlider()}
+
       </div>
-      {goToMoreInSlider()} 
-      {(state.offset + moveBy >= images.length) ?  null :<a className="position-absolute slider__arrow arrow__next" onClick={() =>  moveSlides("next")} >XNEXT</a>  }
-      </div>
+
+      {(state.offset + moveBy >= images.length) ?  null : 
+        <a className="position-absolute slider__arrow arrow__next" onClick={() =>  moveSlides("next")} >
+         <img src={sliderArrow} className="arrow__img arrow__img--next"/>
+        </a>  }
  
+    </div>
     </div>
 
     </>

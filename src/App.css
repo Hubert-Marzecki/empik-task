@@ -24,9 +24,12 @@ max-width: 80vw;
 
 
 .slider__holder{
-  overflow-x:visible;
 }
 
 
 /* Scalable SVG */
 /* https://css-tricks.com/scale-svg/ */
+
+.path--active {
+  fill: var(--main-color)
+}
