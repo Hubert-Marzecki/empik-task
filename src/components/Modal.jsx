@@ -22,11 +22,14 @@ export default function Modal(props) {
     .map((item,index) => `https://picsum.photos/id/${index}/600/600`)
     .map((image, index) => 
     <>
-    <div className="slider__item">
+    {/* <div className="slider__item">
     <img className="p-1 img" src={image} alt="" />
     <p className="caption__name">{index}</p>
-    <p className="caption__info">Lorem Ipsum</p>
-    </div>
+    <p className="caption__info">Lorem Ipsum</p> */}
+    <div class="carousel-item col-6 col-sm-6 col-md-4 col-lg-3 active ">
+                    <img src={image} class="img-fluid " alt="img1"/>
+                </div>
+    {/* </div> */}
     </>
     );
 
@@ -34,7 +37,7 @@ export default function Modal(props) {
     function goToMoreInSlider() {
       if ( state.offset + moveBy >= images.length) {
         return (
-          <div className="text-center slider__cta"> GO TO MORE </div>
+          <div className=" carousel-item col-6 col-sm-6 col-md-4 col-lg-3 active"> GO TO MORE </div>
         )
       }
     }
@@ -71,10 +74,10 @@ export default function Modal(props) {
           <img src={sliderArrow} className="arrow__img arrow__img--prev "/>
         </a>  
       }
-         <div className="col-12 slider__holder  d-flex justify-content-center align-items-center ">
+         <div className=" carousel slider__holder  d-flex justify-content-center align-items-center " data-ride="carousel">
+         {goToMoreInSlider()}
 
             {images.slice(state.offset, state.offset+LIMIT)}
-             {goToMoreInSlider()}
 
       </div>
 
@@ -85,6 +88,45 @@ export default function Modal(props) {
  
     </div>
     </div>
+
+{/* 
+    <div class="top-content">
+    <div class="container-fluid">
+        <div id="carousel-example" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+            {images.slice(state.offset, state.offset+LIMIT)}
+            </div>
+            <a class="carousel-control-prev bg-primary" href="#carousel-example" role="button" data-slide="prev" onClick={() =>  moveSlides("prev")}>
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next bg-primary" href="#carousel-example" role="button" data-slide="next" onClick={() =>  moveSlides("next")}>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div> */}
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
+      <img src="https://picsum.photos/id/41/600/600" class="d-block  img-fluid" alt="..."/>
+    </div>
+    <div class="carousel-item">
+      <img src="https://picsum.photos/id/12/600/600" class="d-block  img-fluid" alt="..."/>
+    </div>
+    <div class="carousel-item">
+      <img src="https://picsum.photos/id/1/600/600" class="d-block  img-fluid" alt="..."/>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
     </>
   );
