@@ -4,24 +4,26 @@
 html, body {
   overflow-x: hidden;
 } 
-.section__title {
+.map-container{
+  display: block;
+  margin: 0 auto;
 }
  .map{
-max-width: 80vw;
+  display: block;
+  margin: 0 auto;
+  max-width: 70vw;
 } 
 .path{
   cursor: pointer;
 }
 .path:hover{
-
   fill: var(--main-color);
   transition: fill 0.1s;
 }
-.path:active{
-  fill: var(--main-color);
+
+.path--active {
+  fill: var(--main-color)
 }
-
-
 
 .slider__holder{
 }
@@ -30,10 +32,6 @@ max-width: 80vw;
 /* Scalable SVG */
 /* https://css-tricks.com/scale-svg/ */
 
-.path--active {
-  fill: var(--main-color)
-}
 
 /* TEST */
 
-*/

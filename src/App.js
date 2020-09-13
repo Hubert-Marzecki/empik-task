@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import Modal from './components/Modal';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { mapElements } from './constants.js'
-
+import useMousePosition from './utils.js'
 // czy MODAL ???
 
 
@@ -25,17 +25,16 @@ function App() {
     }
   }
 
+
+
   return (
     <>
         <h2 className="section__title m-5 text-center font-weight-bolder"> WYBIERZ WOJEWÓDZTWO </h2>
 
-       <div className=" container d-flex flex-wrap overflow-hidden">
+       <div className=" container ">
         
-
-        <div className="row lg:row-cols-1">
-        
-          <div className=" col-12 col-md-5 map-container">
-            <svg className="map m-5"
+          <div className=" map-container w-25">
+            <svg className="map"
                   viewBox="0 0 500 500"
                   preserveAspectRatio="xMidYMid meet"
                   >
@@ -55,7 +54,6 @@ function App() {
             {displayModal()}
           </div>
 
-        </div>
       </div>
 
 
