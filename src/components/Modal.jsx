@@ -15,115 +15,133 @@ export default function Modal(props) {
     offset: 0,    
     mouseX: null,
     mouseY: null,
-    containerDimension: {
-      
-    }
+    sliderOffset: 0,
   })
-  const LIMIT = 8
-  const moveBy = 2
+
+  const MOVE_BY = 300
+
+
+  useEffect(() => {
+    const updateMousePosition = ev => {
+      setState((s) => ({...s, mouseX: ev.clientX, mouseY: ev.clientY }));
+    };
+    window.addEventListener("mousemove", updateMousePosition);
+    console.log(`mouse X: ${state.mouseX}`);
+    console.log(`mouse Y: ${state.mouseY}`)
+    const element = elementPosition(sliderWrapper)
+
+    if(element != 
+    null && 
+    state.mouseX > element.fromLeft && 
+    state.mouseX < element.fromLeft + element.width &&
+    state.mouseY > element.fromTop && 
+    state.mouseY < element.fromTop + element.height
+    ) {
+      // scrollLeft(sliderWrapper, 100)
+        console.log("I'm in");
+    }
+    return () => window.removeEventListener("mousemove", updateMousePosition);
+  },[state.mouseX])
+
+  function scrollLeft (el, px, e){
+    if(el === null) {
+       return
+    } else {
+      e.preventDefault();
+      if(state.sliderOffset + MOVE_BY > elementPosition.width) {
+        return
+      } else {
+        el.scrollLeft = px
+        setState((s) => ({...s, sliderOffset: px}));
+      }
+    
+    }
+    
+  }
 
   const images = genArray(state.allItems, () => randomFromRange(0, 90))
     .map((item,index) => `https://picsum.photos/id/${index}/240/240`)
     .map((image, index) => 
     <>
-     <div class="box ">
-      <div class="box-content">
+     <div className="box " key={index}>
+      <div className="box-content">
       <img src={image}  alt="img1"/>
       </div>
     </div>
     </>
     );
 
-  const { x, y } = useMousePosition();
-   
-    // function goToMoreInSlider() {
-    //   if ( state.offset + moveBy >= images.length) {
-    //     return (
-    //       <div className=" col-6 col-sm-6 col-md-4 col-lg-3 active"> GO TO MORE </div>
-    //     )
-    //   }
-    // }
+      const sliderWrapper = document.querySelector(".landing-wrapper");
+// console.log(sliderWrapper != null ? sliderWrapper : null);
+     const  elementPosition  =  (elem) => {
+        if(elem === null) {
+          return null
+        } else {
+          return {  
+            fromLeft: elem.parentElement.offsetLeft ,
+            fromTop: elem.clientHeight + elem.offsetHeight ,
+            width: elem.offsetWidth,
+            height: elem.offsetHeight,
+          }
+        }
+      }
+      // console.log(sliderWrapper === null ? "dupa" : sliderWrapper);
+    
 
-    // function moveSlides(direction) {
-    //     switch (direction) {
-    //       case "next":
-    //         if (state.offset + moveBy < images.length) {
-    //           setState((s) => ({ ...s, offset: s.offset + moveBy }))
-    //         } else {
-    //           setState((s) => ({ ...s, offset: 0 }))
-    //         }
-    //         break;
+
+      const slider = document.querySelector('.landing-inner-contant');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+          isDown = true;
+          slider.classList.add('active');
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+          isDown = false;
+          slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+          isDown = false;
+          slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+          if(!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - slider.offsetLeft;
+          const walk = (x - startX) * 3; //scroll-fast
+          slider.scrollLeft = scrollLeft - walk;
+          console.log(walk);
+        });
+
         
-    //         case "prev":
-    //           const newOffset = state.offset - moveBy
-    //           if(newOffset >= 0) {
-    //             setState((s) => ({ ...s, offset: s.offset - moveBy }))
-    //           } else {
-    //             return
-    //           }
-    //     }  
-    // }
-
- 
-
   return (
     <>
-        {/* <h3 className="text-center">{props.count}</h3>
+  
+<p>Produkty dostępne w: {props.count}</p>
+<div className="position-relative w-100">
 
-        <div className="position-relative">
-
-      <div className=" modal__holder  bg-secondary d-flex justify-content-center align-items-center">
-        {(state.offset === 0 ) ?  null : 
         <a className="position-absolute slider__arrow arrow__prev">
-          <img src={sliderArrow} className="arrow__img arrow__img--prev "/>
-        </a>  
-      }
-         <div className=" carousel slider__holder  d-flex justify-content-center align-items-center " data-ride="carousel">
-            {images.slice(state.offset, state.offset+LIMIT)}
-            {goToMoreInSlider()}
-      </div>
+          <img src={sliderArrow} className="arrow__img arrow__img--prev " onClick={(e) => scrollLeft(sliderWrapper, state.sliderOffset + MOVE_BY,e)}/>
+        </a> 
 
-      {(state.offset + moveBy >= images.length) ?  null : 
-        <a className="position-absolute slider__arrow arrow__next"  >
-         <img src={sliderArrow} className="arrow__img arrow__img--next"/>
-        </a>  }
- 
-    </div>
-    </div> */}
-
-{/* 
-    <div class="top-content">
-    <div class="container-fluid">
-        <div id="carousel-example" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner row w-100 mx-auto" role="listbox">
-            {images.slice(state.offset, state.offset+LIMIT)}
-            </div>
-            <a class="carousel-control-prev bg-primary" href="#carousel-example" role="button" data-slide="prev" onClick={() =>  moveSlides("prev")}>
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next bg-primary" href="#carousel-example" role="button" data-slide="next" onClick={() =>  moveSlides("next")}>
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </a>
-        </div>
-    </div>
-</div> */}
-<p>Produkty dostępne w: </p>
-
-<div class="landing-wrapper" >
-  <div class="landing-inner-content">
-
+  <div class="landing-wrapper" >
+  <div class="landing-inner-content" data-track='hover'>
   {images}
-
-    <div class="box box-10">
+        {/* <a className="position-absolute slider__arrow arrow__next"  >
+         <img src={sliderArrow} className="arrow__img arrow__img--next"/>
+        </a>   */}
+    <div class="box ">
       <div class="box-content">
-        <p>GO TO MORE</p>
+      </div>
+        <p> GO TO MORE </p>
       </div>
     </div>
-
-  </div>
-</div>
-
-
+        </div>
+ </div>
     </>
   );
 }
