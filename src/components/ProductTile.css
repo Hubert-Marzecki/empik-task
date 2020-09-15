@@ -1,0 +1,60 @@
+.slider-item {
+  position: relative;
+  min-width: 200px;
+  width: 200px;
+  height: 300px;
+  margin: 20px 20px 0 0;
+  padding: 1em;
+  float: left;
+  /* overflow: hidden; */
+}
+/* change responsivnes */
+
+.slider-item:first-of-type {
+  margin-left: 20px;
+}
+
+.slider-item:last-of-type {
+  margin-right: 20px;
+}
+img {
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.item-content {
+  /* background: #000;  */
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.item-content img {
+  width: 80%;
+}
+
+.caption {
+  margin-top: 5px;
+}
+.caption p {
+  margin-top: 0.5em;
+  line-height: 0.4em;
+}
+.caption .item-price {
+  color: #ff6b00;
+  line-height: 0.3em;
+  font-size: 0.8em;
+}
+.caption .item-brand {
+  font-size: 0.8em;
+}
+
+@media (min-width: 576px) {
+  .slider-item {
+    width: 240px;
+  }
+}

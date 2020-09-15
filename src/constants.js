@@ -66,3 +66,47 @@ export const mapElements = [
           }
   ]
 //   Change const name to "counties" and replace count wiht name | d - svgPath
+
+export const productsInfo = [
+  {
+    img:  "https://picsum.photos/id/13/240/240",
+    name: "Product 1",
+    price: 1243
+  },
+  {
+    img:  "https://picsum.photos/id/133/240/240",
+    name: "Product 2",
+    price: 3224
+  },
+  {
+    img:  "https://picsum.photos/id/153/240/240",
+    name: "Product 3",
+    price: 7324
+  },
+  {
+    img:  "https://picsum.photos/id/183/240/240",
+    name: "Product 4",
+    price: 2324
+  },
+  {
+    img:  "https://picsum.photos/id/813/240/240",
+    name: "Product 5",
+    price: 9324
+  },
+  {
+    img:  "https://picsum.photos/id/133/240/240",
+    name: "Product 6",
+    price: 3324
+  },
+  {
+    img:  "https://picsum.photos/id/143/240/240",
+    name: "Product 7",
+    price: 7324
+  },
+  {
+    img:  "https://picsum.photos/id/123/240/240",
+    name: "Product 8",
+    price: 5324
+  }
+
+];

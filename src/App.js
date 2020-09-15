@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Modal from './components/Modal';
+import ProductsSlider from './components/ProductsSlider';
+import ProductsSliderCSS from './components/ProductsSliderCSS';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { mapElements } from './constants.js'
@@ -9,17 +10,19 @@ import useMousePosition from './utils.js'
 
 function App() {
   const [state, setState] = useState({
-    countSelected: "",
+    selectedCount: "",
   })
   // odwrotnie selectedCounts
 
-  function closeModal() {
-    // setState((s) => ({ ...s, countSelected: "" }))
-  }
-
-  function displayModal() {
-    if (state.countSelected) {
-      return (< Modal count={state.countSelected} onClose={closeModal} />)
+  function displaySlider() {
+    if (state.selectedCount) {
+      return (
+      <>
+      <p className="text-center m-5 font-weight-bolder">Produkty dostępne w: {state.selectedCount}</p>
+      {/* <ProductsSlider count={state.selectedCount}/>  */}
+      <ProductsSliderCSS count={state.selectedCount}/>
+      </>
+)
     } else {
       return <div className="m-4"></div>
     }
@@ -30,10 +33,9 @@ function App() {
   return (
     <>
         <h2 className="section__title m-5 text-center font-weight-bolder"> WYBIERZ WOJEWÓDZTWO </h2>
-
        <div className=" container ">
         
-          <div className=" map-container w-25">
+          <div className=" map-container w-100 md-w-25 ">
             <svg className="map"
                   viewBox="0 0 500 500"
                   preserveAspectRatio="xMidYMid meet"
@@ -42,16 +44,16 @@ function App() {
                 <path
                   key={index}
                   d={item.d}
-                  className={`path path-${index} ${state.countSelected === item.count ? "path--active" : null}`}
+                  className={`path path-${index} ${state.selectedCount === item.count ? "path--active" : null}`}
                   xlinkTitle="123213"
-                  onClick={() => setState((s) => ({ ...s, countSelected: item.count }))}
+                  onClick={() => setState((s) => ({ ...s, selectedCount: item.count }))}
                 />
               ))}
             </svg>
           </div>
 
-          <div className="col slider__holder">
-            {displayModal()}
+          <div className="col slider__holder mb-5">
+            {displaySlider()}
           </div>
 
       </div>

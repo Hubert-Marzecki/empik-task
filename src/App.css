@@ -12,7 +12,9 @@ html, body {
   display: block;
   margin: 0 auto;
   max-width: 70vw;
+  width: 100%;
 } 
+/* media */
 .path{
   cursor: pointer;
 }
@@ -29,9 +31,25 @@ html, body {
 }
 
 
-/* Scalable SVG */
-/* https://css-tricks.com/scale-svg/ */
+
+/* MEDIA QUERY */
 
 
-/* TEST */
+@media (min-width: 576px) {
+  .map{
+    width: 50%;
+  }
+  }
 
+@media (min-width: 768px) {  
+
+
+}
+
+@media (min-width: 992px) {
+  .map{
+    width: 25%;
+  }
+  }
+
+@media (min-width: 1200px) { }
