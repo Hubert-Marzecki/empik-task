@@ -9,10 +9,7 @@ export default function ProductsSliderCSS(props) {
     isMouseDown: false,
     startX: 0,
     sliderOffset: 0,
-    sliderStyle: {
-      transitionDuration: "0",
-      transform: `translate3d(0px, 0px, 0px)`,
-    }
+    transitionDuration: "300ms"
   });
   const sliderDiv = React.useRef(null);
 
@@ -48,10 +45,10 @@ export default function ProductsSliderCSS(props) {
 
   function onMouseLeave(e) {
     e.persist();
-    setState((s) => ({ ...adjustSliderValue(s), isMouseDown: false }));
+    setState((s) => ({ ...adjustSliderValue(s), transitionDuration: "300ms", isMouseDown: false }));
   }
   function onMouseUp() {
-    setState((s) => ({ ...adjustSliderValue(s), isMouseDown: false }));
+    setState((s) => ({ ...adjustSliderValue(s),  transitionDuration: "300ms", isMouseDown: false }));
   }
 
   function extractPageX(e) {
@@ -63,23 +60,13 @@ export default function ProductsSliderCSS(props) {
   }
 
   function onMouseMove(e) {
-    if (!state.isMouseDown) {
-      return;
-    } else {
+    if (state.isMouseDown) {
       e.preventDefault();
       e.persist();
-      // console.log(e)
       const x = extractPageX(e);
-      // const x = e.pageX - state.sliderOffset;
-      console.error(`e.pageX ${x}`);
-      console.log(state);
-      const move = (x - state.startX) / 4;
+      const move = Math.floor((x - state.startX) / 5);
       const scroll = state.sliderOffset + move;
-      // if (state.sliderOffset > 0) {
-      //   setState((s) => ({ ...s, sliderOffset: 0 }));
-      // } else {
       setState((s) => ({ ...s, sliderOffset: scroll }));
-      // }
     }
   }
 
@@ -112,7 +99,10 @@ export default function ProductsSliderCSS(props) {
           <div
             className="landing-inner-content"
             ref={sliderDiv}
-            style={state.sliderStyle}
+            style={{
+              transitionDuration: "300ms",
+              transform: `translate3d(${state.sliderOffset}px, 0px, 0px)`,
+            }}
             onMouseDown={(e) => onMouseDown(e)}
             onMouseLeave={(e) => onMouseLeave(e)}
             onMouseUp={(e) => onMouseUp(e)}

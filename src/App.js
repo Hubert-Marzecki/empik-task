@@ -3,23 +3,31 @@ import ProductsSlider from './components/ProductsSlider';
 import ProductsSliderCSS from './components/ProductsSliderCSS';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { mapElements } from './constants.js'
+import { counties } from './constants.js'
 import useMousePosition from './utils.js'
-// czy MODAL ???
 
+
+//  product item style - like empik 
+//  go to more button
+//  logo svg
+//  napisać komentarze
+//  public change name / logo
+//  gh pages
+//  estetic md
+//  skrutowe if bez return
+//  explorer
 
 function App() {
   const [state, setState] = useState({
     selectedCount: "",
   })
-  // odwrotnie selectedCounts
 
   function displaySlider() {
     if (state.selectedCount) {
       return (
       <>
       <p className="text-center m-5 font-weight-bolder">Produkty dostępne w: {state.selectedCount}</p>
-      {/* <ProductsSlider count={state.selectedCount}/>  */}
+      <ProductsSlider count={state.selectedCount}/> 
       <ProductsSliderCSS count={state.selectedCount}/>
       </>
 )
@@ -40,13 +48,13 @@ function App() {
                   viewBox="0 0 500 500"
                   preserveAspectRatio="xMidYMid meet"
                   >
-              {mapElements.map((item, index) => (
+              {counties.map((item, index) => (
                 <path
                   key={index}
-                  d={item.d}
-                  className={`path path-${index} ${state.selectedCount === item.count ? "path--active" : null}`}
+                  d={item.svgPath}
+                  className={`path path-${index} ${state.selectedCount === item.name ? "path--active" : null}`}
                   xlinkTitle="123213"
-                  onClick={() => setState((s) => ({ ...s, selectedCount: item.count }))}
+                  onClick={() => setState((s) => ({ ...s, selectedCount: item.name}))}
                 />
               ))}
             </svg>
