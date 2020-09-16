@@ -1,6 +1,6 @@
-## Dragable Slider 
+## Draggable Slider 
 
-The application uses Bootstrap and React.js and allows users to select Poland county, and display slider of products. Application created during the recruitment process.
+The application uses Bootstrap and React.js and allows users to select Poland county, and display responsible slider of products. Application created during the recruitment process.
 
 ## Application features:
 * Selectable SVG Map
