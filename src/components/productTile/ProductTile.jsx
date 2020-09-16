@@ -1,18 +1,17 @@
-import style from "./ProductTile.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./ProductTile.css";
 
 import React from "react";
 import { preventDefault } from "../../utils.js";
 
-export default function ProductTile(props) {
+export default function ProductTile({name, img, brand, price}) {
   return (
-      <div className="slider-item">
+      <div key={name} className="slider-item">
         <div className="item-content">
-          <img onDragStart={preventDefault} src={props.img} alt={props.name} />
+          <img onDragStart={preventDefault} src={img} alt={name} />
           <div className="caption ">
-            <p className="item-name font-weight-bold"> {props.name} </p>
-            <p className="item-brand"> {props.brand} </p>
-            <p className="item-price font-weight-bold"> {props.price} zł </p>
+            <p className="item-name font-weight-bold"> {name} </p>
+            <p className="item-brand"> {brand} </p>
+            <p className="item-price font-weight-bold"> {price} zł </p>
           </div>
         </div>
       </div>

@@ -1,47 +1,18 @@
-:root{
+:root {
   --main-color: rgb(62, 191, 170);
 }
-html, body {
+html,
+body {
   overflow-x: hidden;
-} 
-
-.map-container{
-  /* display: block; */
-  /* margin: 0 auto; */
 }
- .map{
-  /* display: block; */
-  /* margin: 0 auto; */
-  /* max-width: 70vw; */
-  /* width: 100%; */
-} 
-.path{
+.path {
   cursor: pointer;
 }
-.path:hover{
+.path:hover {
   fill: var(--main-color);
   transition: fill 0.1s;
 }
 
-.path--active{
-  fill: var(--main-color)
+.path--active {
+  fill: var(--main-color);
 }
-
-
-/* MEDIA QUERY */
-
-
-/* @media (min-width: 576px) {
-
-  }
-
-@media (min-width: 768px) {  
-
-
-}
-
-@media (min-width: 992px) {
-
-  }
-
-@media (min-width: 1200px) { } */
