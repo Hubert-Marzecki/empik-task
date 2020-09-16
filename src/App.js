@@ -6,16 +6,7 @@ import { counties } from './constants.js'
 import useMousePosition from './utils.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-//  product item style - like empik 
-//  go to more button
-
-//  skrutowe if bez return
-//  explorer
-
 //  napisać komentarze
-//  estetic md
-
-//  HOVER DONT WORK
 
 function App() {
   const [state, setState] = useState({
@@ -27,7 +18,7 @@ function App() {
       return (
       <>
       <p className="text-center m-5 font-weight-bolder">Produkty dostępne w: {state.selectedCount}</p>
-      <ProductsSlider count={state.selectedCount}/> 
+      {/* <ProductsSlider count={state.selectedCount}/>  */}
       <ProductsSliderCSS count={state.selectedCount}/>
       </>
 )

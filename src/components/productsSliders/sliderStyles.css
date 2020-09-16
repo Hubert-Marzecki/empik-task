@@ -51,8 +51,8 @@
     align-items: stretch;
   }
   .slider-cta{
-    position: absolute ;
-    top: 2%;
+    margin-top: 6em;
+    font-weight: 800;
   }
 
 

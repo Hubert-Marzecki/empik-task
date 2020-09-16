@@ -65,7 +65,7 @@ export default function ProductsSliderCSS(props) {
       e.preventDefault();
       e.persist();
       const x = extractPageX(e);
-      const move = Math.floor((x - state.startX) / 5);
+      const move = Math.floor((x - state.startX) / 3);
       const scroll = state.sliderOffset + move;
       setState((s) => ({ ...s, sliderOffset: scroll }));
     }
@@ -87,8 +87,8 @@ export default function ProductsSliderCSS(props) {
 
   return (
     <>
-      <div className="position-relative w-100">
-        <div className="slider-wrapper">
+      <div className="position-relative w-100 row">
+        <div className="slider-wrapper col-12 col-sm-8">
           <a
             className="position-absolute slider__arrow arrow__prev"
             onClick={() => moveSlider("prev")}
@@ -114,7 +114,7 @@ export default function ProductsSliderCSS(props) {
             {productsInfo.map(ProductTile)}
             <div className="slider-item">
               <div className="item-content">
-                <p className="slider-cta"> GO TO MORE </p>
+                <p className="slider-cta font-bolder " href="#"> <a href="# "> GO TO MORE</a> </p>
               </div>
             </div>
           </div>

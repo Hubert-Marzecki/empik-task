@@ -69,7 +69,7 @@ export default function ProductsSlider(props) {
 
             <div className="slider-item  mt-5 ">
               <div className="item-content">
-              <p className="slider-cta"> GO TO MORE </p>
+              <p className="slider-cta" href="#"> <a href="#"> GO TO MORE</a> </p>
               </div>
             </div>
           </div>
