@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import ProductsSlider from './components/ProductsSlider';
-import ProductsSliderCSS from './components/ProductsSliderCSS';
+import ProductsSlider from './components/productsSliders/ProductsSlider.jsx'
+import ProductsSliderCSS from './components/productsSliders/ProductsSliderCSS.jsx'
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import { counties } from './constants.js'
 import useMousePosition from './utils.js'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //  product item style - like empik 
 //  go to more button
-//  logo svg
-//  napisać komentarze
-//  public change name / logo
-//  gh pages
-//  estetic md
+
 //  skrutowe if bez return
 //  explorer
+
+//  napisać komentarze
+//  estetic md
+
+//  HOVER DONT WORK
 
 function App() {
   const [state, setState] = useState({
@@ -36,15 +36,13 @@ function App() {
     }
   }
 
-
-
   return (
     <>
         <h2 className="section__title m-5 text-center font-weight-bolder"> WYBIERZ WOJEWÓDZTWO </h2>
-       <div className=" container ">
-        
-          <div className=" map-container w-100 md-w-25 ">
-            <svg className="map"
+
+       <div className="container">
+          <div className=" map-container d-block col-12 col-md-5 col-lg-3 mx-auto my-0 mx-auto my-0">
+            <svg className="map d-block w-100"
                   viewBox="0 0 500 500"
                   preserveAspectRatio="xMidYMid meet"
                   >
@@ -52,23 +50,18 @@ function App() {
                 <path
                   key={index}
                   d={item.svgPath}
-                  className={`path path-${index} ${state.selectedCount === item.name ? "path--active" : null}`}
-                  xlinkTitle="123213"
+                  className={`path btn ${state.selectedCount === item.name  ? "path--active" : null}`}
+                  // xlinkTitle=""
                   onClick={() => setState((s) => ({ ...s, selectedCount: item.name}))}
                 />
               ))}
             </svg>
           </div>
-
-          <div className="col slider__holder mb-5">
+          <div className="col mb-5">
             {displaySlider()}
           </div>
-
       </div>
-
-
     </>
-
   );
 }
 

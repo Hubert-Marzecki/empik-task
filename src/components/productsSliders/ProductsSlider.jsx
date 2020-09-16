@@ -1,9 +1,10 @@
-import React, {  nm useState } from "react";
+import React, { useState } from "react";
 import sliderStyles from "./sliderStyles.css";
 import "bootstrap/dist/css/bootstrap.css";
-import sliderArrow from "../assets/next.png";
-import { productsInfo } from "../constants.js";
-import ProductTile from "./ProductTile";
+import sliderArrow from '../../assets/slider-arrow.png'
+import { productsInfo } from "../../constants.js";
+import ProductTile from '../productTile/ProductTile'
+import tileStyle from '../productTile/ProductTile';
 
 export default function ProductsSlider(props) {
   const [state, setState] = useState({
@@ -48,19 +49,17 @@ export default function ProductsSlider(props) {
 
   return (
     <>
-      <code>Wersja JS</code>
-
-      <div className="position-relative w-100 ">
+      <div className="position-relative  ">
         <a
-          className="position-absolute slider__arrow arrow__prev"
+          className="slider__arrow arrow__prev position-absolute "
           onClick={() => (sliderDiv.current.scrollLeft -= 200)}
         >
           <img src={sliderArrow} className="arrow__img arrow__img--prev " />
         </a>
 
-        <div className="landing-wrapper rounded" ref={sliderDiv}>
+        <div className="slider-wrapper rounded w-100" ref={sliderDiv}>
           <div
-            className="landing-inner-content"
+            className="slider-inner-content"
             onMouseDown={onMouseDown}
             onMouseLeave={onMouseLeave}
             onMouseUp={onMouseUp}
@@ -68,14 +67,15 @@ export default function ProductsSlider(props) {
           >
             {productsInfo.map(ProductTile)}
 
-            <div className="item ">
-              <div className="item-content"></div>
-              <p> GO TO MORE </p>
+            <div className="slider-item  mt-5 ">
+              <div className="item-content">
+              <p className="slider-cta"> GO TO MORE </p>
+              </div>
             </div>
           </div>
         </div>
         <a
-          className="position-absolute slider__arrow arrow__next"
+          className="slider__arrow  arrow__next border-0 position-absolute "
           onClick={() => (sliderDiv.current.scrollLeft += 200)}
         >
           <img src={sliderArrow} className="arrow__img arrow__img--next" />

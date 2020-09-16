@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import sliderArrow from "../assets/next.png";
-import ProductTile from "./ProductTile";
-import { productsInfo } from "../constants.js";
+import sliderArrow from '../../assets/slider-arrow.png'
+import ProductTile from '../productTile/ProductTile'
+import { productsInfo } from "../../constants.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function ProductsSliderCSS(props) {
   const [state, setState] = useState({
@@ -86,9 +87,8 @@ export default function ProductsSliderCSS(props) {
 
   return (
     <>
-      <code>Wersja CSS</code>
       <div className="position-relative w-100">
-        <div className="landing-wrapper">
+        <div className="slider-wrapper">
           <a
             className="position-absolute slider__arrow arrow__prev"
             onClick={() => moveSlider("prev")}
@@ -97,7 +97,7 @@ export default function ProductsSliderCSS(props) {
           </a>
 
           <div
-            className="landing-inner-content"
+            className="slider-inner-content"
             ref={sliderDiv}
             style={{
               transitionDuration: "300ms",

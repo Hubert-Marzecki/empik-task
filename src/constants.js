@@ -85,41 +85,49 @@ export const productsInfo = [
   {
     img: "https://picsum.photos/id/13/240/240",
     name: "Product 1",
+    brand: "Appple",
     price: 1243,
   },
   {
     img: "https://picsum.photos/id/133/240/240",
     name: "Product 2",
+    brand: "HP",
     price: 3224,
   },
   {
     img: "https://picsum.photos/id/153/240/240",
     name: "Product 3",
+    brand: "Huawei",
     price: 7324,
   },
   {
     img: "https://picsum.photos/id/183/240/240",
     name: "Product 4",
+    brand: "Xiamoi",
     price: 2324,
   },
   {
     img: "https://picsum.photos/id/813/240/240",
     name: "Product 5",
+    brand: "Samsung",
     price: 9324,
   },
   {
     img: "https://picsum.photos/id/133/240/240",
     name: "Product 6",
+    brand: "Google",
     price: 3324,
   },
   {
     img: "https://picsum.photos/id/143/240/240",
     name: "Product 7",
+    brand: "inVidia",
     price: 7324,
   },
   {
     img: "https://picsum.photos/id/123/240/240",
     name: "Product 8",
+    brand: "HP",
     price: 5324,
   },
 ];
